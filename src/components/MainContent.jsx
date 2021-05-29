@@ -9,6 +9,7 @@ function MainContent() {
       .then((response) => response.json())
       .then((data) => {
         setListMovie(data.Search);
+        // use ceil to round up to the largest integer
         const table = Math.ceil(data.totalResults / 10);
         setNrPages(table);
         console.log(data);
@@ -28,6 +29,7 @@ function MainContent() {
           <h4 className="col two">Year</h4>
           <h4 className="col three">Type</h4>
         </div>
+
         {listMovie.map(function (film) {
           return (
             <div className="row" style={{ backgroundColor: "#FF8700" }}>
@@ -71,6 +73,7 @@ function MainContent() {
           style={{ backgroundColor: currentPage ? "#55868C" : "#04395E" }}
           onClick={(event) => setCurrentPage(Math.abs(currentPage + 1))}
         >
+          {" "}
           Next
         </button>
         <button
