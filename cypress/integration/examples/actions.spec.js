@@ -10,6 +10,6 @@ context("Actions", () => {
   it(".type() - type into a DOM element", () => {
     // https://on.cypress.io/type
     cy.wait(3001);
-    cy.get("[data-cy=next");
+    cy.get("[data-cy=next").click();
   });
 });

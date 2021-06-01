@@ -69,12 +69,9 @@ function MainContent() {
             );
           })}
         </div>
-        <button
+        <button 
           style={{ backgroundColor: currentPage ? "#55868C" : "#04395E" }}
-          onClick={(event) => setCurrentPage(Math.abs(currentPage + 1))}
-        >
-          {" "}
-          Next
+          onClick={(event) => setCurrentPage(Math.abs(currentPage + 1))}> Next
         </button>
         <button
           style={{ backgroundColor: currentPage ? "#55868C" : "#04395E" }}
