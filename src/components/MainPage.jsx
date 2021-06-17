@@ -2,17 +2,18 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 
 function MainPage() {
+  const [searchMovie, setMovie] = useState("shrek");
+
   const [listMovie, setListMovie] = useState([]);
   // the movies the set allows you to store it
   const [aBPages, setAbPages] = useState(0);
   // pages
   const [currentPage, setCurrentPage] = useState(1);
   //pages going through start at 1 because of a page
-  const [searchMovie, setMovie] = useState("shrek");
 
   useEffect(() => {
     fetch(
-      `http://www.omdbapi.com/?s=${searchMovie}&page=${currentPage}&apikey=24885019`
+      `https://www.omdbapi.com/?s=${searchMovie}&page=${currentPage}&apikey=24885019`
     )
       .then((response) => response.json())
       .then((data) => {
@@ -36,18 +37,18 @@ function MainPage() {
   // now needs a function to search the movies
   function getMovies(event) {
     fetch(
-      `http://www.omdbapi.com/?s=${searchMovie}&page=${currentPage}&apikey=24885019`
+      `https://www.omdbapi.com/?s=${searchMovie}&page=${currentPage}&apikey=24885019`
     )
       .then((response) => response.json())
 
       .then((data) => {
-        setListMovie(data.search);
-        const table = Math.ceil(data.totalResults / 10);
-        setAbPages(table);
+        setListMovie(data.Search);
+        const temp = Math.ceil(data.totalResults / 10);
+        setAbPages(temp);
         console.log(data);
-        const pageList = [];
+        const pagesList = [];
         for (let i = 1; i <= aBPages; i++) {
-          pageList.push(i);
+          pagesList.push(i);
         }
       });
   }
