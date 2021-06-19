@@ -11,6 +11,7 @@ function MainPage() {
   const [currentPage, setCurrentPage] = useState(1);
   //pages going through start at 1 because of a page
 
+  // what will already load for the user
   useEffect(() => {
     fetch(
       `https://www.omdbapi.com/?s=${searchMovie}&page=${currentPage}&apikey=24885019`
@@ -24,6 +25,7 @@ function MainPage() {
         console.log(data);
       });
   }, [currentPage]);
+  // i want it to display the current page already
 
   const pagesList = [];
   for (let i = 1; i <= aBPages; i++) {
@@ -63,19 +65,35 @@ function MainPage() {
         />
         <SearchButton onClick={getMovies}>Search</SearchButton>
       </div>
+
       <div className="box">
-        <div className="row" style={{ backgroundColor: "#3E363F" }}>
-          <h4 className="col one">Title</h4>
-          <h4 className="col two">Year</h4>
-          <h4 className="col three">Type</h4>
-        </div>
+        {!listMovie && <Sorry>No movie found try again?</Sorry>}
 
         {listMovie?.map(function (film) {
           return (
-            <div className="row" style={{ backgroundColor: "#FF8700" }}>
-              <p className="col one">{film.Title}</p>
-              <p className="col two">{film.Year}</p>
-              <p className="col three">{film.Type}</p>
+            <div
+              className="row"
+              style={{ backgroundColor: "#FF8700", cursor: "pointer" }}
+            >
+              {film.Poster !== "N/A" && (
+                <img
+                  className="col left poster"
+                  src={film.Poster}
+                  alt={film.Title}
+                ></img>
+              )}
+              {film.Poster === "N/A" && (
+                <img
+                  className="col left poster"
+                  src={Image}
+                  alt={film.Title}
+                ></img>
+              )}
+
+              <div class name="col right poster">
+                <p>{film.Title}</p>
+                <p>{film.Year}</p>
+              </div>
             </div>
           );
         })}
@@ -83,13 +101,19 @@ function MainPage() {
 
       <div className="buttons">
         <button
-          style={{ backgroundColor: currentPage ? "#55868C" : "#04395E" }}
+          style={{
+            backgroundColor: currentPage ? "#55868C" : "#04395E",
+            cursor: "pointer",
+          }}
           onClick={(event) => setCurrentPage(1)}
         >
           First
         </button>
         <button
-          style={{ backgroundColor: currentPage ? "#55868C" : "#04395E" }}
+          style={{
+            backgroundColor: currentPage ? "#55868C" : "#04395E",
+            cursor: "pointer",
+          }}
           onClick={(event) => setCurrentPage(Math.abs(currentPage - 1))}
           // maths.abs returns the value of any given number
         >
@@ -139,4 +163,8 @@ const SearchButton = styled.button`
   font-size: 1.5rem;
   background-color: #ba1b1d;
   cursor: pointer;
+`;
+const Sorry = styled.div`
+  font-size: 3rem;
+  color: #ffd60a;
 `;

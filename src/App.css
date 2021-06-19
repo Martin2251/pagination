@@ -1,6 +1,12 @@
 .App {
   text-align: center;
 }
+
+img.poster {
+  width: 20%;
+  height: 350px;
+  object-fit: fill;
+}
 .title {
   background-color: orangered;
   color: white;
@@ -13,21 +19,20 @@
   content: "";
   display: table;
   clear: both;
+  margin-bottom: 2rem;
 }
 .col {
+  margin-left: 5rem;
+}
+.left {
+  /* width: 300px; */
   float: left;
-  width: 50%;
 }
-.one {
-  width: 35%;
-}
-.two {
-  width: 35%;
+.right {
+  float: right;
+  width: 40%;
 }
 
-.three {
-  width: 5%;
-}
 .box {
   border: 4px dotted #36f1cd;
   margin: 5rem;
