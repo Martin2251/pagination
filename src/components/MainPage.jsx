@@ -102,6 +102,7 @@ function MainPage() {
 
       <div className="buttons">
         <button
+          data-cy="btn-first"
           style={{
             backgroundColor: currentPage ? "#55868C" : "#04395E",
             cursor: "pointer",
@@ -127,7 +128,9 @@ function MainPage() {
                 style={{
                   backgroundColor: page === currentPage ? "#55868C" : "#04395E",
                   fontSize: "2rem",
+                  cursor: "pointer",
                 }}
+                data-cy={`btn-page-${page}`}
                 onClick={(event) => setCurrentPage(page)}
               >
                 {page}
@@ -145,6 +148,7 @@ function MainPage() {
           Next
         </button>
         <button
+          data-cy="btn-last"
           style={{ backgroundColor: currentPage ? "#55868C" : "#04395E" }}
           onClick={(event) => setCurrentPage(4)}
         >
