@@ -1,5 +1,6 @@
 .App {
-  text-align: center;
+  text-align: justify;
+  background-color: #f8a977;
 }
 
 img.poster {
@@ -11,6 +12,7 @@ img.poster {
   background-color: orangered;
   color: white;
   font-size: 2rem;
+  text-align: center;
 }
 .film-title {
   font-family: "Montserrat", sans-serif;
@@ -25,12 +27,15 @@ img.poster {
   margin-left: 5rem;
 }
 .left {
-
   float: left;
 }
 .right {
   float: right;
   width: 40%;
+}
+.search-section {
+  display: flex;
+  justify-content: center;
 }
 
 .box {

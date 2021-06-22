@@ -58,7 +58,7 @@ function MainPage() {
 
   return (
     <div>
-      <div>
+      <div className="search-section">
         <SearchBar
           onChange={(event) => setMovie(event.target.value)}
           type="text "
@@ -162,7 +162,14 @@ function MainPage() {
 export default MainPage;
 
 const SearchBar = styled.input`
-  font-size: 1.5rem;
+  font-size: 1rem;
+  border-radius: 10px;
+  width: 30rem;
+  height: 2rem;
+  border: none;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-right: 10px;
 `;
 const SearchButton = styled.button`
   font-size: 1.5rem;
