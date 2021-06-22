@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import Image from "../images/picture-sorry.png";
 
 function MainPage() {
   const [searchMovie, setMovie] = useState("shrek");
