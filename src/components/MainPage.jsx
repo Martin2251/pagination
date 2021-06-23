@@ -72,26 +72,23 @@ function MainPage() {
 
         {listMovie?.map(function (film) {
           return (
-            <div
-              className="row"
-              style={{ backgroundColor: "#FF8700", cursor: "pointer" }}
-            >
+            <div className="row" style={{ cursor: "pointer" }}>
               {film.Poster !== "N/A" && (
                 <img
-                  className="col left poster"
+                  className="col-left-poster"
                   src={film.Poster}
                   alt={film.Title}
                 ></img>
               )}
               {film.Poster === "N/A" && (
                 <img
-                  className="col left poster"
+                  className="col-left-poster"
                   src={Image}
                   alt={film.Title}
                 ></img>
               )}
 
-              <div class name="col right poster">
+              <div class name="col-right-poster">
                 <p>{film.Title}</p>
                 <p>{film.Year}</p>
               </div>
@@ -99,62 +96,65 @@ function MainPage() {
           );
         })}
       </div>
-
-      <div className="buttons">
-        <button
-          data-cy="btn-first"
-          style={{
-            backgroundColor: currentPage ? "#55868C" : "#04395E",
-            cursor: "pointer",
-          }}
-          onClick={(event) => setCurrentPage(1)}
-        >
-          First
-        </button>
-        <button
-          style={{
-            backgroundColor: currentPage ? "#55868C" : "#04395E",
-            cursor: "pointer",
-          }}
-          onClick={(event) => setCurrentPage(Math.abs(currentPage - 1))}
-          // maths.abs returns the value of any given number
-        >
-          Prev
-        </button>
-        <div className="mapBtn">
-          {pagesList.map((page) => {
-            return (
-              <button
-                style={{
-                  backgroundColor: page === currentPage ? "#55868C" : "#04395E",
-                  fontSize: "2rem",
-                  cursor: "pointer",
-                }}
-                data-cy={`btn-page-${page}`}
-                onClick={(event) => setCurrentPage(page)}
-              >
-                {page}
-              </button>
-            );
-          })}
+      {listMovie && (
+        <div className="buttons">
+          <button
+            data-cy="btn-first"
+            style={{
+              backgroundColor: currentPage ? "#55868C" : "#04395E",
+              cursor: "pointer",
+            }}
+            onClick={(event) => setCurrentPage(1)}
+          >
+            First
+          </button>
+          <button
+            style={{
+              backgroundColor: currentPage ? "#55868C" : "#04395E",
+              cursor: "pointer",
+            }}
+            onClick={(event) => setCurrentPage(Math.abs(currentPage - 1))}
+            // maths.abs returns the value of any given number
+          >
+            Prev
+          </button>
+          <div className="mapBtn">
+            {pagesList.map((page) => {
+              return (
+                <button
+                  style={{
+                    backgroundColor:
+                      page === currentPage ? "#55868C" : "#04395E",
+                    fontSize: "2rem",
+                    cursor: "pointer",
+                  }}
+                  data-cy={`btn-page-${page}`}
+                  onClick={(event) => setCurrentPage(page)}
+                >
+                  {page}
+                </button>
+              );
+            })}
+          </div>
+          <button
+            style={{ backgroundColor: currentPage ? "#55868C" : "#04395E" }}
+            onClick={(event) => setCurrentPage(Math.abs(currentPage + 1))}
+            // math.abs is a function that returns the value of the number
+            // you want the event to trigger when the user clicks
+            // showing if its a on page display
+          >
+            {" "}
+            Next
+          </button>
+          <button
+            data-cy="btn-last"
+            style={{ backgroundColor: currentPage ? "#55868C" : "#04395E" }}
+            onClick={(event) => setCurrentPage(4)}
+          >
+            Last
+          </button>
         </div>
-        <button
-          style={{ backgroundColor: currentPage ? "#55868C" : "#04395E" }}
-          onClick={(event) => setCurrentPage(Math.abs(currentPage + 1))}
-          // math.abs is a function that returns the value of the number
-          // you want the event to trigger when the user clicks
-        >
-          {" "}
-          Next
-        </button>
-        <button
-          data-cy="btn-last"
-          style={{ backgroundColor: currentPage ? "#55868C" : "#04395E" }}
-          onClick={(event) => setCurrentPage(4)}
-        >
-          Last
-        </button>
-      </div>
+      )}
     </div>
   );
 }
@@ -175,6 +175,9 @@ const SearchButton = styled.button`
   font-size: 1.5rem;
   background-color: #ba1b1d;
   cursor: pointer;
+  border-radius: 10px;
+  height: 2.5rem;
+  &: hover;
 `;
 const Sorry = styled.div`
   font-size: 3rem;

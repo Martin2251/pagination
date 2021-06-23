@@ -17,12 +17,14 @@ img.poster {
 .film-title {
   font-family: "Montserrat", sans-serif;
 }
-.row:after {
-  content: "";
-  display: table;
+
+.row {
   clear: both;
   margin-bottom: 2rem;
+  display: flex;
+  justify-content: center;
 }
+
 .col {
   margin-left: 5rem;
 }
@@ -39,14 +41,17 @@ img.poster {
 }
 
 .box {
-  border: 4px dotted #36f1cd;
+  border: 1px dotted #f8a977;
   margin: 5rem;
+  background-color: #f8a977;
 }
+
 .buttons {
   display: flex;
   flex-direction: row;
   margin: 2rem;
   justify-content: center;
+  align-items: center;
   font-size: 2rem;
   border-radius: 3px;
 }
@@ -54,4 +59,13 @@ img.poster {
   margin-left: 0.5rem;
   margin-right: 0.5rem;
   border-radius: 5px;
+}
+
+.footer {
+  height: 2rem;
+  background-color: #000814;
+  color: #ffc300;
+  font-size: 0.8rem;
+  text-align: center;
+  padding-top: 1rem;
 }
